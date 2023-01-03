@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:desktop_window/desktop_window.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'home.dart';
 
 void main() {
@@ -15,7 +16,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.lightGreen,
+        canvasColor: HexColor('#fdf5e6')
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
