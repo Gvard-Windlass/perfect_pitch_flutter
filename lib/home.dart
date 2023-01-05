@@ -1,7 +1,5 @@
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-
 import 'package:flutter/material.dart';
+import 'pitch_buttons.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -12,7 +10,16 @@ class Home extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Home', style: TextStyle(color: Colors.white)),
       ),
-      body: SingleChildScrollView(),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(8, 12, 8, 8),
+          child: Column(
+            children: const [
+              PitchButtons(),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
