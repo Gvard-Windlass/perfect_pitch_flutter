@@ -40,6 +40,12 @@ class SettingsWrapperState extends State<SettingsWrapper> {
       if (key.contains('#')) key: pitchSelection[key]!
   };
 
+  void togglePitch(String key, bool value) {
+    setState(() {
+      pitchSelection[key] = !value;
+    });
+  }
+
   @override
   void initState() {
     super.initState();

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'settings_wrapper.dart';
 
 class PitchButton extends StatelessWidget {
   const PitchButton({super.key, required this.pitchKey, required this.pitchEnabled});
@@ -17,7 +18,7 @@ class PitchButton extends StatelessWidget {
           child: AspectRatio(
             aspectRatio: pitchKey.contains('#') ? 1/3 : 1/4,
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () => SettingsWrapper.of(context).togglePitch(pitchKey, pitchEnabled),
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all<Color>(_getPitchButtonColor()),
                 foregroundColor: MaterialStateProperty.all<Color>(pitchKey.contains('#')?Colors.white:Colors.black),
