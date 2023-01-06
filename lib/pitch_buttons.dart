@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'pitch_button.dart';
+import 'settings_wrapper.dart';
 
 class PitchButtons extends StatelessWidget {
   const PitchButtons({super.key});
-  static final whiteKeys = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
-  static final blackKeys = ['C#', 'D#', 'F#', 'G#', 'A#'];
 
   @override
   Widget build(BuildContext context) {
@@ -13,10 +12,10 @@ class PitchButtons extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: whiteKeys.map((e) => PitchButton(
-            pitchKey: e, 
-            pitchEnabled: false
-          )).toList()
+          children: [
+            for (MapEntry e in SettingsWrapper.of(context).whiteKeys.entries)
+              PitchButton(pitchKey: e.key, pitchEnabled: e.value)
+          ]
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -26,9 +25,9 @@ class PitchButtons extends StatelessWidget {
               child: ConstrainedBox(constraints: 
                 const BoxConstraints(maxWidth: PitchButton.pitchBtnMaxWidth))
             ),
-            ...blackKeys.sublist(0, 2).map((e) {
-              return PitchButton(pitchKey: e, pitchEnabled: false);
-            }).toList(),
+            for (MapEntry e in SettingsWrapper.of(context).blackKeys.entries.take(2))
+              PitchButton(pitchKey: e.key, pitchEnabled: e.value),
+            // gap between D# and F#
             Flexible(
               child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: PitchButton.pitchBtnSymmetricPadding),
@@ -36,9 +35,8 @@ class PitchButtons extends StatelessWidget {
                 constraints: const BoxConstraints(maxWidth: PitchButton.pitchBtnMaxWidth), 
                 child: const AspectRatio(aspectRatio: 1/3)
             ))),
-            ...blackKeys.sublist(2).map((e) {
-              return PitchButton(pitchKey: e, pitchEnabled: false);
-            }).toList(),
+            for (MapEntry e in SettingsWrapper.of(context).blackKeys.entries.skip(2))
+              PitchButton(pitchKey: e.key, pitchEnabled: e.value),
           ]
         )
       ],
