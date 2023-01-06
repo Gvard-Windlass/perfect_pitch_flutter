@@ -4,14 +4,16 @@ class PitchButton extends StatelessWidget {
   const PitchButton({super.key, required this.pitchKey, required this.pitchEnabled});
   final String pitchKey;
   final bool pitchEnabled;
+  static const double pitchBtnMaxWidth = 70;
+  static const double pitchBtnSymmetricPadding = 4;
 
   @override
   Widget build(BuildContext context) {
     return Flexible(
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 4),
+        padding: const EdgeInsets.symmetric(horizontal: pitchBtnSymmetricPadding),
         child: ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 70),
+          constraints: const BoxConstraints(maxWidth: pitchBtnMaxWidth),
           child: AspectRatio(
             aspectRatio: pitchKey.contains('#') ? 1/3 : 1/4,
             child: ElevatedButton(
