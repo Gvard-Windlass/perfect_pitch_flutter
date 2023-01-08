@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'pitch_button.dart';
-import 'settings_wrapper.dart';
+import 'package:perfect_pitch_flutter/settings/settings_wrapper.dart';
 
 class PitchButtons extends StatelessWidget {
+  // TODO add function pass for reusing buttons in drill
   const PitchButtons({super.key});
 
   @override

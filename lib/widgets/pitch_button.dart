@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'settings_wrapper.dart';
+import 'package:perfect_pitch_flutter/settings/settings_wrapper.dart';
 
 class PitchButton extends StatelessWidget {
   const PitchButton({super.key, required this.pitchKey, required this.pitchEnabled});

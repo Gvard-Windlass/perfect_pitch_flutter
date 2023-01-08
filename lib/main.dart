@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:desktop_window/desktop_window.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'home.dart';
-import 'settings_wrapper.dart';
+import 'package:perfect_pitch_flutter/screens/home.dart';
+import 'package:perfect_pitch_flutter/settings/settings_wrapper.dart';
 
 void main() {
   runApp(const MyApp());

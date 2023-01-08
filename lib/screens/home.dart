@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'pitch_buttons.dart';
-import 'settings_wrapper.dart';
+import 'package:perfect_pitch_flutter/widgets/pitch_buttons.dart';
+import 'package:perfect_pitch_flutter/settings/settings_wrapper.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});

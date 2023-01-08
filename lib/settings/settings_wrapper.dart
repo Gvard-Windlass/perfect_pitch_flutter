@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:perfect_pitch_flutter/settings_storage.dart';
+import 'settings_storage.dart';
 import 'settings_provider.dart';
 import 'settings_model.dart';
 
