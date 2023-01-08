@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:perfect_pitch_flutter/settings_storage.dart';
 import 'settings_provider.dart';
+import 'settings_model.dart';
 
 class SettingsWrapper extends StatefulWidget {
   const SettingsWrapper({super.key, required this.child});
@@ -20,41 +22,38 @@ class SettingsWrapper extends StatefulWidget {
 }
 
 // data and methods go here
-enum ExerciseMode {singlePitch, unison}
-
 class SettingsWrapperState extends State<SettingsWrapper> {
-  static final List<String> _pitches = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
-  static final List<String> _octaves = ['1', '2', '3', '4', '5', '6', '7'];
-  
-  late Map<String, bool> pitchSelection;
-  late Map<String, bool> octaveSelection;
-  late ExerciseMode exerciseMode;
+  bool isLoading = true;
+  late Settings settings;
 
   Map<String, bool> get whiteKeys => {
-    for (final key in pitchSelection.keys)
-      if (!key.contains('#')) key: pitchSelection[key]!
+    for (final key in settings.pitchSelection.keys)
+      if (!key.contains('#')) key: settings.pitchSelection[key]!
   };
 
   Map<String, bool> get blackKeys => {
-    for (final key in pitchSelection.keys)
-      if (key.contains('#')) key: pitchSelection[key]!
+    for (final key in settings.pitchSelection.keys)
+      if (key.contains('#')) key: settings.pitchSelection[key]!
   };
 
   void togglePitch(String key, bool value) {
     setState(() {
-      pitchSelection[key] = !value;
+      settings.pitchSelection[key] = !value;
     });
+    SettingsStorage.saveSettings(settings);
   }
 
   @override
   void initState() {
     super.initState();
-    final defaultPitches = ['E', 'F#'];
-    final defaultOctaves = ['1', '2', '4', '5'];
+    _loadSettings();
+  }
 
-    pitchSelection = Map.fromIterable(_pitches, value: (pitch) => defaultPitches.contains(pitch));
-    octaveSelection = Map.fromIterable(_octaves, value: (octave) => defaultOctaves.contains(octave));
-    exerciseMode = ExerciseMode.singlePitch;
+  Future _loadSettings() async {
+    settings = await SettingsStorage.loadSettings();
+    setState(() {
+      isLoading = false;
+    });
   }
   
   @override
