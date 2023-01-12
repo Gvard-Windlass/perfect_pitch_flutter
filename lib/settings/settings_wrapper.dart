@@ -44,9 +44,16 @@ class SettingsWrapperState extends State<SettingsWrapper> {
     widget.storage.saveSettings(settings);
   }
 
-  void onModeSelection(ExerciseMode? mode) async {
+  Future onModeSelection(ExerciseMode? mode) async {
     setState(() {
       settings.exerciseMode = mode!;
+    });
+    await widget.storage.saveSettings(settings);
+  }
+
+  Future onOctaveSelection(String octave, bool? newValue) async {
+    setState(() {
+      settings.octaveSelection[octave] = newValue!;
     });
     await widget.storage.saveSettings(settings);
   }

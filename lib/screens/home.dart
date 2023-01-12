@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:perfect_pitch_flutter/widgets/mode_selection.dart';
+import 'package:perfect_pitch_flutter/widgets/octave_selection.dart';
 import 'package:perfect_pitch_flutter/widgets/pitch_buttons.dart';
 import 'package:perfect_pitch_flutter/settings/settings_wrapper.dart';
 
@@ -17,10 +18,14 @@ class Home extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.fromLTRB(8, 12, 8, 8),
           child: Column(
-            children: const [
-              PitchButtons(),
-              SizedBox(height: 12),
-              ModeSelection(),
+            children: [
+              const PitchButtons(),
+              const SizedBox(height: 12),
+              const ModeSelection(),
+              const SizedBox(height: 8),
+              Text('Octaves', style: Theme.of(context).textTheme.headline6),
+              const SizedBox(height: 12),
+              const OctaveSelection(),
             ],
           ),
         ),
