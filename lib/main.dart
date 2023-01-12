@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:desktop_window/desktop_window.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:perfect_pitch_flutter/screens/home.dart';
+import 'package:perfect_pitch_flutter/settings/settings_storage.dart';
 import 'package:perfect_pitch_flutter/settings/settings_wrapper.dart';
 
 void main() {
@@ -15,6 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SettingsWrapper(
+      storage: SettingsStorage(),
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(

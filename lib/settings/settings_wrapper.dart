@@ -4,8 +4,9 @@ import 'settings_provider.dart';
 import 'settings_model.dart';
 
 class SettingsWrapper extends StatefulWidget {
-  const SettingsWrapper({super.key, required this.child});
+  const SettingsWrapper({super.key, required this.child, required this.storage});
   final Widget child;
+  final SettingsStorage storage;
 
   static SettingsWrapperState? maybeOf(BuildContext context) {
     return context.dependOnInheritedWidgetOfExactType<SettingsProvider>()?.data;
@@ -40,7 +41,7 @@ class SettingsWrapperState extends State<SettingsWrapper> {
     setState(() {
       settings.pitchSelection[key] = !value;
     });
-    SettingsStorage.saveSettings(settings);
+    widget.storage.saveSettings(settings);
   }
 
   @override
@@ -50,7 +51,7 @@ class SettingsWrapperState extends State<SettingsWrapper> {
   }
 
   Future _loadSettings() async {
-    settings = await SettingsStorage.loadSettings();
+    settings = await widget.storage.loadSettings();
     setState(() {
       isLoading = false;
     });
