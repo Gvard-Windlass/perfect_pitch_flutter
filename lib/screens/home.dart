@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:perfect_pitch_flutter/widgets/mode_selection.dart';
 import 'package:perfect_pitch_flutter/widgets/pitch_buttons.dart';
 import 'package:perfect_pitch_flutter/settings/settings_wrapper.dart';
 
@@ -18,6 +19,8 @@ class Home extends StatelessWidget {
           child: Column(
             children: const [
               PitchButtons(),
+              SizedBox(height: 12),
+              ModeSelection(),
             ],
           ),
         ),

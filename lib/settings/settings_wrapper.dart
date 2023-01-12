@@ -44,6 +44,13 @@ class SettingsWrapperState extends State<SettingsWrapper> {
     widget.storage.saveSettings(settings);
   }
 
+  void onModeSelection(ExerciseMode? mode) async {
+    setState(() {
+      settings.exerciseMode = mode!;
+    });
+    await widget.storage.saveSettings(settings);
+  }
+
   @override
   void initState() {
     super.initState();
