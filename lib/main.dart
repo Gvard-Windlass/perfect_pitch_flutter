@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:desktop_window/desktop_window.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:perfect_pitch_flutter/screens/drill.dart';
 import 'package:perfect_pitch_flutter/screens/home.dart';
 import 'package:perfect_pitch_flutter/settings/settings_storage.dart';
 import 'package:perfect_pitch_flutter/settings/settings_wrapper.dart';
@@ -19,11 +20,15 @@ class MyApp extends StatelessWidget {
       storage: SettingsStorage(),
       child: MaterialApp(
         title: 'Flutter Demo',
+        initialRoute: '/',
+        routes: {
+          '/': (context) => const Home(),
+          '/drill': (context) => Drill(),
+        },
         theme: ThemeData(
           primarySwatch: Colors.lightGreen,
           canvasColor: HexColor('#fdf5e6')
         ),
-        home: const Home(),
       )
     );
   }

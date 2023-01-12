@@ -3,6 +3,7 @@ import 'package:perfect_pitch_flutter/widgets/mode_selection.dart';
 import 'package:perfect_pitch_flutter/widgets/octave_selection.dart';
 import 'package:perfect_pitch_flutter/widgets/pitch_buttons.dart';
 import 'package:perfect_pitch_flutter/settings/settings_wrapper.dart';
+import 'package:perfect_pitch_flutter/widgets/start_button.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -26,6 +27,15 @@ class Home extends StatelessWidget {
               Text('Octaves', style: Theme.of(context).textTheme.headline6),
               const SizedBox(height: 12),
               const OctaveSelection(),
+              const SizedBox(height: 8),
+              Text('Begin', style: Theme.of(context).textTheme.headline6),
+              const SizedBox(height: 18),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: const [
+                  StartButton(icon: Icons.headphones, route: '/drill')
+                ],
+              )
             ],
           ),
         ),
