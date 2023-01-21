@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:desktop_window/desktop_window.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:perfect_pitch_flutter/exercise/exercise_single.dart';
+import 'package:perfect_pitch_flutter/exercise/exercise_unison.dart';
+import 'package:perfect_pitch_flutter/exercise/exercise_wrapper.dart';
 import 'package:perfect_pitch_flutter/screens/drill.dart';
 import 'package:perfect_pitch_flutter/screens/home.dart';
+import 'package:perfect_pitch_flutter/settings/settings_model.dart';
 import 'package:perfect_pitch_flutter/settings/settings_storage.dart';
 import 'package:perfect_pitch_flutter/settings/settings_wrapper.dart';
 
@@ -23,7 +27,11 @@ class MyApp extends StatelessWidget {
         initialRoute: '/',
         routes: {
           '/': (context) => const Home(),
-          '/drill': (context) => Drill(),
+          '/drill': (context) {
+            var exercise = SettingsWrapper.of(context).settings.exerciseMode == 
+              ExerciseMode.singlePitch ? ExerciseSingle(context: context) : ExerciseUnison(context: context);
+            return ExerciseWrapper(exercise: exercise, child: Drill());
+          },
         },
         theme: ThemeData(
           primarySwatch: Colors.lightGreen,
