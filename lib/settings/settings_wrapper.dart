@@ -37,6 +37,16 @@ class SettingsWrapperState extends State<SettingsWrapper> {
       if (key.contains('#')) key: settings.pitchSelection[key]!
   };
 
+  List<String> get activePitches => [
+    for (MapEntry pitchSetting in settings.pitchSelection.entries)
+      if (pitchSetting.value) pitchSetting.key
+  ];
+
+  List<String> get activeOctaves => [
+    for (MapEntry octaveSetting in settings.octaveSelection.entries)
+      if (octaveSetting.value) octaveSetting.key
+  ];
+
   void togglePitch(String key, bool value) {
     setState(() {
       settings.pitchSelection[key] = !value;
