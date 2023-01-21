@@ -11,3 +11,12 @@ class MockSettingsStorage extends SettingsStorage {
     return Future.value();
   }
 }
+
+class MockSettingsStorageUnison extends MockSettingsStorage {
+  @override
+  Future<Settings> loadSettings() async {
+    Settings settings = Settings.initial();
+    settings.exerciseMode = ExerciseMode.unison;
+    return Future.value(settings);
+  }
+}

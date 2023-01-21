@@ -6,6 +6,7 @@ import 'package:path/path.dart' as p;
 import 'settings_model.dart';
 
 class SettingsStorage {
+  // TODO - add filesystem to SettingsStorage?
   Future<Settings> loadSettings() async {
     String settingsPath = await _getFilePath();
     File settingsFile = File(settingsPath);
