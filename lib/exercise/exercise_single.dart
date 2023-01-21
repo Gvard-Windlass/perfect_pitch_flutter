@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:perfect_pitch_flutter/exercise/exercise.dart';
 
 class ExerciseSingle extends Exercise {
-  ExerciseSingle({required super.context});
+  ExerciseSingle({required super.context, required super.player});
   String currentPitch = '';
 
   @override
@@ -11,6 +11,7 @@ class ExerciseSingle extends Exercise {
     currentOctave = getRandomSelection(octavePool);
     drillCount++;
     print(currentPitch+currentOctave);
+    player.playSingle(currentPitch, currentOctave);
   }
 
   @override
@@ -35,6 +36,11 @@ class ExerciseSingle extends Exercise {
 
     buttonColors[currentPitch] = Colors.lightGreen;
     answered = true;
+  }
+  
+  @override
+  void repeat() {
+    player.playSingle(currentPitch, currentOctave);
   }
 
 }

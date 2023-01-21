@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:perfect_pitch_flutter/exercise/exercise_wrapper.dart';
+import 'package:perfect_pitch_flutter/player/player.dart';
 import 'package:perfect_pitch_flutter/screens/drill.dart';
 import 'package:perfect_pitch_flutter/settings/settings_wrapper.dart';
 import 'package:perfect_pitch_flutter/widgets/chord_input_text.dart';
@@ -18,7 +19,7 @@ Widget createDrillSingleScreen() => SettingsWrapper(
     initialRoute: '/',
     routes: {
       '/': (context) => ExerciseWrapper(
-        exercise: MockExerciseSingle(context: context),
+        exercise: MockExerciseSingle(context: context, player: Player()),
         child: Drill(), 
       )
     },
@@ -31,7 +32,7 @@ Widget createDrillUnisonScreen() => SettingsWrapper(
     initialRoute: '/',
     routes: {
       '/': (context) => ExerciseWrapper(
-        exercise: MockExerciseUnison(context: context),
+        exercise: MockExerciseUnison(context: context, player: Player()),
         child: Drill(), 
       )
     },

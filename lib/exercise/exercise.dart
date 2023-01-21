@@ -1,11 +1,13 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:perfect_pitch_flutter/player/player.dart';
 import 'package:perfect_pitch_flutter/settings/settings_wrapper.dart';
 
 abstract class Exercise {
-  Exercise({required this.context});
+  Exercise({required this.context, required this.player});
   BuildContext context;
+  Player player;
 
   List<String> pitchPool = [];
   List<String> octavePool = [];
@@ -41,6 +43,7 @@ abstract class Exercise {
   void startDrill();
   void nextDrill();
   void onPitchClick(String key);
+  void repeat();
 
   // ANCHOR - utility methods
 

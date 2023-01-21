@@ -39,7 +39,7 @@ class Drill extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      DrillActionButton(action: () {}, text: 'Repeat'),
+                      DrillActionButton(action: ExerciseWrapper.of(context).repeat, text: 'Repeat'),
                       if(SettingsWrapper.of(context).settings.exerciseMode == 
                       ExerciseMode.unison)
                         ...[

@@ -61,6 +61,10 @@ class ExerciseWrapperState extends State<ExerciseWrapper> {
       widget.exercise.nextDrill();
     });
   }
+
+  void repeat() {
+    widget.exercise.repeat();
+  }
   
   @override
   Widget build(BuildContext context) {

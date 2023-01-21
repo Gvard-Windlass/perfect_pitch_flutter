@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:perfect_pitch_flutter/exercise/exercise.dart';
 
 class ExerciseUnison extends Exercise {
-  ExerciseUnison({required super.context});
+  ExerciseUnison({required super.context, required super.player});
 
   final int chordTones = 2;
   List<String> pitchOrder = [];
@@ -35,6 +35,7 @@ class ExerciseUnison extends Exercise {
 
     print(notes);
     drillCount++;
+    player.playUnison(correctChord);
   }
   
   @override
@@ -64,6 +65,7 @@ class ExerciseUnison extends Exercise {
 
   void checkAnswer() {
     if (answered) {
+      player.playUnison(answerChord);
       return;
     }
 
@@ -85,6 +87,7 @@ class ExerciseUnison extends Exercise {
       notes.add(answerOrder[i]+octavesOrder[i]);
     }
     answerChord = notes;
+    player.playUnison(answerChord);
     answered = true;
   }
 
@@ -100,5 +103,10 @@ class ExerciseUnison extends Exercise {
 
     chordInput = 'Answer: ';
     chordInputColor = Colors.black;
+  }
+  
+  @override
+  void repeat() {
+    player.playUnison(correctChord);
   }
 }

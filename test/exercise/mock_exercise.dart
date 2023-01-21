@@ -3,7 +3,7 @@ import 'package:perfect_pitch_flutter/exercise/exercise_unison.dart';
 import 'package:perfect_pitch_flutter/settings/settings_model.dart';
 
 class MockExerciseSingle extends ExerciseSingle {
-  MockExerciseSingle({required super.context});
+  MockExerciseSingle({required super.context, required super.player});
   
   @override
   void initPools() {
@@ -27,7 +27,7 @@ class MockExerciseSingle extends ExerciseSingle {
 }
 
 class MockExerciseUnison extends ExerciseUnison {
-  MockExerciseUnison({required super.context});
+  MockExerciseUnison({required super.context, required super.player});
   
   @override
   void initPools() {

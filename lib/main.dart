@@ -4,6 +4,7 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:perfect_pitch_flutter/exercise/exercise_single.dart';
 import 'package:perfect_pitch_flutter/exercise/exercise_unison.dart';
 import 'package:perfect_pitch_flutter/exercise/exercise_wrapper.dart';
+import 'package:perfect_pitch_flutter/player/player.dart';
 import 'package:perfect_pitch_flutter/screens/drill.dart';
 import 'package:perfect_pitch_flutter/screens/home.dart';
 import 'package:perfect_pitch_flutter/settings/settings_model.dart';
@@ -29,7 +30,9 @@ class MyApp extends StatelessWidget {
           '/': (context) => const Home(),
           '/drill': (context) {
             var exercise = SettingsWrapper.of(context).settings.exerciseMode == 
-              ExerciseMode.singlePitch ? ExerciseSingle(context: context) : ExerciseUnison(context: context);
+              ExerciseMode.singlePitch ? 
+              ExerciseSingle(context: context, player: Player()) : 
+              ExerciseUnison(context: context, player: Player());
             return ExerciseWrapper(exercise: exercise, child: Drill());
           },
         },
