@@ -20,7 +20,7 @@ class Home extends StatelessWidget {
           padding: const EdgeInsets.fromLTRB(8, 12, 8, 8),
           child: Column(
             children: [
-              const PitchButtons(),
+              const PitchButtons(actionSet: PitchActionSet.settingsActions),
               const SizedBox(height: 12),
               const ModeSelection(),
               const SizedBox(height: 8),

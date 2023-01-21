@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:perfect_pitch_flutter/settings/settings_wrapper.dart';
+import 'package:perfect_pitch_flutter/widgets/pitch_actions.dart';
 
 class PitchButton extends StatelessWidget {
-  const PitchButton({super.key, required this.pitchKey, required this.pitchEnabled});
+  const PitchButton({super.key, required this.pitchKey, required this.pitchEnabled, required this.actions});
   final String pitchKey;
   final bool pitchEnabled;
+  final PitchActions actions;
+
   static const double pitchBtnMaxWidth = 70;
   static const double pitchBtnSymmetricPadding = 4;
 
   @override
   Widget build(BuildContext context) {
+    final func = actions.onPitchBtnPressed(context, pitchKey, pitchEnabled);
     return Flexible(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: pitchBtnSymmetricPadding),
@@ -18,12 +21,8 @@ class PitchButton extends StatelessWidget {
           child: AspectRatio(
             aspectRatio: pitchKey.contains('#') ? 1/3 : 1/4,
             child: ElevatedButton(
-              onPressed: () => SettingsWrapper.of(context).togglePitch(pitchKey, pitchEnabled),
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all<Color>(_getPitchButtonColor()),
-                foregroundColor: MaterialStateProperty.all<Color>(pitchKey.contains('#')?Colors.white:Colors.black),
-                overlayColor: MaterialStateProperty.resolveWith(_getPitchButtonOverlayColor)
-              ),
+              onPressed: func != null ? () => func() : null,
+              style: actions.stylePitchButton(context, pitchKey, pitchEnabled),
               child: Align(
                 alignment: Alignment.bottomCenter,
                 child: Padding(
@@ -36,33 +35,5 @@ class PitchButton extends StatelessWidget {
         )
       )
     );
-  }
-
-  Color? _getPitchButtonOverlayColor(Set<MaterialState> states) {
-    Color overlayColor = pitchKey.contains('#')?Colors.grey.shade200:Colors.black;
-    if (states.contains(MaterialState.hovered)) {
-        return overlayColor.withOpacity(0.08);
-      }
-      if (states.contains(MaterialState.focused)) {
-        return overlayColor.withOpacity(0.12);
-      }
-      if (states.contains(MaterialState.pressed)) {
-        return overlayColor.withOpacity(0.12);
-      }
-    return null;
-  }
-
-  Color _getPitchButtonColor() {
-    if (pitchKey.contains('#')) {
-      if (pitchEnabled) {
-        return Colors.lightGreen.shade900;
-      }
-      return const Color.fromARGB(255, 35, 35, 35);
-    } else {
-      if (pitchEnabled) {
-        return Colors.lightGreen;
-      }
-      return Colors.white;
-    }
   }
 }
