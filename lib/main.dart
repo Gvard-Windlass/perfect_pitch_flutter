@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:desktop_window/desktop_window.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -13,7 +15,9 @@ import 'package:perfect_pitch_flutter/settings/settings_wrapper.dart';
 
 void main() {
   runApp(const MyApp());
-  setWindowSize();
+  if (Platform.isWindows) {
+    setWindowSize();
+  }
 }
 
 class MyApp extends StatelessWidget {
