@@ -1,16 +1,13 @@
 # perfect_pitch_flutter
 
-A new Flutter project.
+Practice Flutter project (perfect pitch training app).
 
-## Getting Started
+You need to supply your own sounds in assets folder (assets/A0.wav - assets/Gs7.wav). Shaprs (black keys) should be marked with 's' (i.e. C3# file should be 'C3s.wav').
 
-This project is a starting point for a Flutter application.
+Tested on Windows 10 and Android API 28.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Screenshots
+![Home page portrait](screenshots/home_portrait.png?raw=true "Home page portrait")
+![Home page fullscreen](screenshots/home_fullscreen.png?raw=true "Home page fullscreen")
+![Drill page (single pitch exercise)](screenshots/drill_single.png?raw=true "Drill single pitch")
+![Drill page (unison exercise)](screenshots/drill_unison.png?raw=true "Drill unison")
