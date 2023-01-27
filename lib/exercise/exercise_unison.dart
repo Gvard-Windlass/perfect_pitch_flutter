@@ -1,4 +1,5 @@
 import 'package:collection/collection.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:perfect_pitch_flutter/exercise/exercise.dart';
 
@@ -33,7 +34,7 @@ class ExerciseUnison extends Exercise {
     octavesOrder = notes.map((e) => e.substring(e.length-1)).toList();
     correctChord = notes;
 
-    print(notes);
+    if(kDebugMode) print(notes);
     drillCount++;
     player.playUnison(correctChord);
   }

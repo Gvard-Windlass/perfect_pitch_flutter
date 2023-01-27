@@ -1,4 +1,5 @@
 import 'package:audioplayers/audioplayers.dart';
+import 'package:flutter/foundation.dart';
 
 class Player {
   final playerSingle = AudioPlayer();
@@ -25,7 +26,7 @@ class Player {
     for (var i = 0; i < notes.length; i++) {
       notes[i] = notes[i].replaceAll(RegExp(r'#'), 's');
     }
-    print(notes);
+    if(kDebugMode) print(notes);
 
     for (var i = 0; i < notes.length; i++) {
       unisonPlayers[i].play(AssetSource('${notes[i]}.wav'));

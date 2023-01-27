@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:perfect_pitch_flutter/exercise/exercise.dart';
 
@@ -10,7 +11,7 @@ class ExerciseSingle extends Exercise {
     currentPitch = getRandomSelection(pitchPool);
     currentOctave = getRandomSelection(octavePool);
     drillCount++;
-    print(currentPitch+currentOctave);
+    if(kDebugMode) print(currentPitch+currentOctave);
     player.playSingle(currentPitch, currentOctave);
   }
 
@@ -26,7 +27,7 @@ class ExerciseSingle extends Exercise {
     if (answered) {
       return;
     }
-    print(key == currentPitch);
+    if(kDebugMode) print(key == currentPitch);
 
     if (key != currentPitch) {
       buttonColors[key] = Colors.red;
