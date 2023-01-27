@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
               ExerciseMode.singlePitch ? 
               ExerciseSingle(context: context, player: Player()) : 
               ExerciseUnison(context: context, player: Player());
-            return ExerciseWrapper(exercise: exercise, child: Drill());
+            return ExerciseWrapper(exercise: exercise, child: const Drill());
           },
         },
         theme: ThemeData(

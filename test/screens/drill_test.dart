@@ -20,7 +20,7 @@ Widget createDrillSingleScreen() => SettingsWrapper(
     routes: {
       '/': (context) => ExerciseWrapper(
         exercise: MockExerciseSingle(context: context, player: Player()),
-        child: Drill(), 
+        child: const Drill(), 
       )
     },
   ), 
@@ -33,7 +33,7 @@ Widget createDrillUnisonScreen() => SettingsWrapper(
     routes: {
       '/': (context) => ExerciseWrapper(
         exercise: MockExerciseUnison(context: context, player: Player()),
-        child: Drill(), 
+        child: const Drill(), 
       )
     },
   ), 
